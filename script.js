@@ -8,41 +8,69 @@ function getComputerChoice() {
     switch (randomNumber) {
         case 0:
             computerSelection = 'Rock';
-            console.log("The computer selected: " + computerSelection + "!");
             break;
         case 1:
             computerSelection = 'Paper';
-            console.log("The computer selected: " + computerSelection + "!");
             break;
         case 2:
             computerSelection = 'Scissors';
-            console.log("The computer selected: " + computerSelection + "!");
             break;
-    return computerSelection;
     }
+    return computerSelection;
 }
 
+// Get user's answer
 let playerAnswer = prompt("Please select: Rock, Paper or Scissor?");
 // Convert user's answer to a lower case string with an upper case first letter 
-let PlayerSelection = playerAnswer.charAt(0).toUpperCase() + playerAnswer.slice(1).toLowerCase();
-console.log("You selected: " + PlayerSelection + "!");
+let playerSelection = playerAnswer.charAt(0).toUpperCase() + playerAnswer.slice(1).toLowerCase();
+console.log("You selected: " + playerSelection + "!");
 
+// Call getComputerChoice function
 getComputerChoice();
+console.log("The computer selected: " + computerSelection + "!");
 
-function playRound(PlayerSelection, computerSelection) {
-    let result1;
-    switch (result1) {
-        case PlayerSelection === computerSelection:
-            console.log("It's a tie!");
-            break; 
-        case PlayerSelection === 'Rock' && computerSelection === 'Paper':
-            console.log("You lost! Paper beats Rock.");
-            break;
+let result1;
+
+// Resolve a round 
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection = 'Rock') {
+        switch (computerSelection) {
+            case computerSelection = 'Paper':
+                result1 = "Defeat! Paper beats Rock.";
+                break;
+            case computerSelection = 'Scissors':
+                result1 = "Victory! Rock beats Scissors.";
+                break;
+            default: result1 = "Tie!";
+        }
+        console.log(result1);
+    } else if (playerSelection = 'Paper') {
+        switch (computerSelection) {
+            case computerSelection = 'Rock':
+                result1 = "Victory! Paper beats Rock.";
+                break;
+            case computerSelection = 'Scissors':
+                result1 = "Defeat! Scissors beat Paper.";
+                break;
+            default: result1 = "Tie!";
+        }
+        console.log(result1);
+    } else {
+        switch (computerSelection) {
+            case computerSelection = 'Rock':
+                result1 = "Defeat! Rock beats Scissors.";
+                break;
+            case computerSelection = 'Paper':
+                result1 = "Victory! Scissors beat Paper.";
+                break;
+            default: result1 = "Tie!"; 
+        }
+        console.log(result1);
     }
 }
 
-playRound(PlayerSelection, computerSelection);
-
+// Call playRound function
+playRound(playerSelection, computerSelection);
 
 
 
