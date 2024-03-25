@@ -85,11 +85,14 @@ function playGame() {
         playerScore = ++playerScore;
         console.log("Your score is " + playerScore + ".");
         console.log("Computer's score is " + computerScore + ".");
-    } else {
+    } else if (resultMessage.charAt(0) === 'D') {
         computerScore = ++computerScore;
         console.log("Your score is " + playerScore + ".");
         console.log("Computer's score is " + computerScore + ".");
-    }
+    } else {
+        console.log("Your score is " + playerScore + ".");
+        console.log("Computer's score is " + computerScore + ".");
+    }                                         
 }
 
 playGame();
@@ -98,7 +101,7 @@ playGame();
 playGame();
 playGame();
 
-function finalResult(playerScore, computerScore) {
+function finalResult() {
     if (playerScore > computerScore) {
         console.log("Congratulations! You won the game!");
     } else if (playerScore < computerScore) {
@@ -109,11 +112,3 @@ function finalResult(playerScore, computerScore) {
 }
 
 finalResult();
-
-
-
-
-
-
-
-
