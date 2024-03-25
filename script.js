@@ -19,58 +19,99 @@ function getComputerChoice() {
     return computerSelection;
 }
 
-// Get user's answer
-let playerAnswer = prompt("Please select: Rock, Paper or Scissor?");
-// Convert user's answer to a lower case string with an upper case first letter 
-let playerSelection = playerAnswer.charAt(0).toUpperCase() + playerAnswer.slice(1).toLowerCase();
-console.log("You selected: " + playerSelection + "!");
-
-// Call getComputerChoice function
-getComputerChoice();
-console.log("The computer selected: " + computerSelection + "!");
-
-let result1;
+let playerAnswer;
+let playerSelection;
+let resultMessage;
 
 // Resolve a round 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection = 'Rock') {
         switch (computerSelection) {
             case computerSelection = 'Paper':
-                result1 = "Defeat! Paper beats Rock.";
+                resultMessage = "Defeat! Paper beats Rock.";
                 break;
             case computerSelection = 'Scissors':
-                result1 = "Victory! Rock beats Scissors.";
+                resultMessage = "Victory! Rock beats Scissors.";
                 break;
-            default: result1 = "Tie!";
+            default: resultMessage = "Tie!";
         }
-        console.log(result1);
+        return resultMessage;
     } else if (playerSelection = 'Paper') {
         switch (computerSelection) {
             case computerSelection = 'Rock':
-                result1 = "Victory! Paper beats Rock.";
+                resultMessage = "Victory! Paper beats Rock.";
                 break;
             case computerSelection = 'Scissors':
-                result1 = "Defeat! Scissors beat Paper.";
+                resultMessage = "Defeat! Scissors beat Paper.";
                 break;
-            default: result1 = "Tie!";
+            default: resultMessage = "Tie!";
         }
-        console.log(result1);
+        return resultMessage;
     } else {
         switch (computerSelection) {
             case computerSelection = 'Rock':
-                result1 = "Defeat! Rock beats Scissors.";
+                resultMessage = "Defeat! Rock beats Scissors.";
                 break;
             case computerSelection = 'Paper':
-                result1 = "Victory! Scissors beat Paper.";
+                resultMessage = "Victory! Scissors beat Paper.";
                 break;
-            default: result1 = "Tie!"; 
+            default: resultMessage = "Tie!"; 
         }
-        console.log(result1);
+        return resultMessage;
     }
 }
 
-// Call playRound function
-playRound(playerSelection, computerSelection);
+
+let playerScore = 0;
+let computerScore = 0;
+
+// Write a NEW function called playGame(). Use the previous function inside of this one to play 
+// a five round game that keeps score and reports a winner or loser at the end.
+function playGame() {
+    // Get user's answer
+    let playerAnswer = prompt("Please select: Rock, Paper or Scissor?");
+    // Convert user's answer to a lower case string with an upper case first letter 
+    let playerSelection = playerAnswer.charAt(0).toUpperCase() + playerAnswer.slice(1).toLowerCase();
+    console.log("You selected: " + playerSelection + "!");
+    
+    // Call getComputerChoice function
+    getComputerChoice();
+    console.log("The computer selected: " + computerSelection + "!");
+    
+    // Call playRound function
+    playRound(playerSelection, computerSelection);
+    console.log(resultMessage);
+    if (resultMessage.charAt(0) === 'V') {
+        playerScore = ++playerScore;
+        console.log("Your score is " + playerScore + ".");
+        console.log("Computer's score is " + computerScore + ".");
+    } else {
+        computerScore = ++computerScore;
+        console.log("Your score is " + playerScore + ".");
+        console.log("Computer's score is " + computerScore + ".");
+    }
+}
+
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
+
+function finalResult(playerScore, computerScore) {
+    if (playerScore > computerScore) {
+        console.log("Congratulations! You won the game!");
+    } else if (playerScore < computerScore) {
+        console.log("You lost the game!");
+    } else {
+        console.log("It's a tie! Play again!");
+    }
+}
+
+finalResult();
+
+
+
 
 
 
