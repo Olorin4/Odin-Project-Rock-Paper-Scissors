@@ -27,10 +27,10 @@ let resultMessage;
 function playRound(playerSelection, computerSelection) {
     if (playerSelection = 'Rock') {
         switch (computerSelection) {
-            case computerSelection = 'Paper':
+            case ('Paper'):
                 resultMessage = "Defeat! Paper beats Rock.";
                 break;
-            case computerSelection = 'Scissors':
+            case ('Scissors'):
                 resultMessage = "Victory! Rock beats Scissors.";
                 break;
             default: resultMessage = "Tie!";
@@ -38,10 +38,10 @@ function playRound(playerSelection, computerSelection) {
         return resultMessage;
     } else if (playerSelection = 'Paper') {
         switch (computerSelection) {
-            case computerSelection = 'Rock':
+            case ('Rock'):
                 resultMessage = "Victory! Paper beats Rock.";
                 break;
-            case computerSelection = 'Scissors':
+            case ('Scissors'):
                 resultMessage = "Defeat! Scissors beat Paper.";
                 break;
             default: resultMessage = "Tie!";
@@ -49,10 +49,10 @@ function playRound(playerSelection, computerSelection) {
         return resultMessage;
     } else {
         switch (computerSelection) {
-            case computerSelection = 'Rock':
+            case ('Rock'):
                 resultMessage = "Defeat! Rock beats Scissors.";
                 break;
-            case computerSelection = 'Paper':
+            case ('Paper'):
                 resultMessage = "Victory! Scissors beat Paper.";
                 break;
             default: resultMessage = "Tie!"; 
