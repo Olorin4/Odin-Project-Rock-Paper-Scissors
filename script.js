@@ -67,13 +67,15 @@ let computerScore = 0;
 
 // button listeners
 let btn1 = document.querySelector("#rock");
-btn1.addEventListener("click", playRound(rock));
+btn1.addEventListener("click", playRound("rock"));
 let btn2 = document.querySelector("#paper");
-btn2.addEventListener("click", playRound(paper));
+btn2.addEventListener("click", playRound("paper"));
 let btn3 = document.querySelector("#scissors");
-btn3.addEventListener("click", playRound(scissors));
+btn3.addEventListener("click", playRound("scissors"));
 
-
+//div for displaying results
+const div = document.createElement("div");
+div.classList.add("Results");
 
 
 
