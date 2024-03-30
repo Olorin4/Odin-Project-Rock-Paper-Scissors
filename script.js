@@ -26,14 +26,16 @@ function getPlayerSelection() {
     getComputerSelection();
     const para = document.createElement("p");
     div.appendChild(para);
-    para.textContent = ("You selected: " + playerSelection + "! ");
+    para.textContent = ("Round " + round + ": You selected: " + playerSelection + "! ");
     para.textContent += (" The computer selected: " + computerSelection + "!");
 }
 
 // button events
 let playerSelection;
+let round = 0;
 let selectRock = () => {
     playerSelection = "rock";
+    round = ++round;
     getPlayerSelection(); 
     gameScore();
 };
@@ -42,6 +44,7 @@ btn1.addEventListener("click", selectRock);
 
 let selectPaper = () => {
     playerSelection = "paper";
+    round = ++round;
     getPlayerSelection(); 
     gameScore();
 };
@@ -50,6 +53,7 @@ btn2.addEventListener("click", selectPaper);
 
 let selectScissors = () => {
     playerSelection = "scissors";
+    round = ++round;
     getPlayerSelection(); 
     gameScore();
 };
@@ -92,7 +96,7 @@ function playRound() {
     }
     const para2 = document.createElement("p");
     div.appendChild(para2);
-    para2.textContent = ("Round: " + resultRound);
+    para2.textContent = resultRound;
 }
 
 let playerScore = 0;
@@ -109,7 +113,7 @@ function gameScore() {
 
     if (playerScore == 5 || computerScore == 5) {
         if (playerScore > computerScore) {
-            para3.textContent = ("Congratulations! You won the game! The final score is " + playerScore + " -  "+ computerScore + ".");
+            para3.textContent = ("Congratulations! You defeated Skynet! The final score is " + playerScore + " -  "+ computerScore + ".");
         } else if (playerScore < computerScore) {
             para3.textContent = ("You lost the game! The final score is " + playerScore + " -  "+ computerScore + ".");
         } else {
@@ -118,8 +122,7 @@ function gameScore() {
         para3.style.cssText = "fontWeight: bold; color: blue; background: yellow;";
         removeButtons();
     } else {
-        para3.textContent += ("Your score is " + playerScore + ". ");
-        para3.textContent += ("Computer's score is " + computerScore + ".");
+        para3.textContent += ("The score is " + playerScore + " - " + computerScore + ".");
     }
 }
 
