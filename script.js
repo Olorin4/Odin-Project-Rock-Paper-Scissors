@@ -24,8 +24,6 @@ const container = document.querySelector(".container");
 const div = document.createElement("div");
 div.classList.add("results");
 container.appendChild(div);
-const para = document.createElement("p");
-div.appendChild(para);
 
 let playerAnswer;
 let playerSelection;
@@ -35,26 +33,32 @@ let resultMessage;
 let btn1 = document.querySelector("#rock");
 btn1.addEventListener("click", () => {
     playerSelection = "rock";
-    para.textContent = ("You selected: " + playerSelection + "!");
+    handlePlayerSelection();    
 });
 let btn2 = document.querySelector("#paper");
 btn2.addEventListener("click", () => {
     playerSelection = "paper";
-    para.textContent = ("You selected: " + playerSelection + "!");
+    handlePlayerSelection();
 });
 let btn3 = document.querySelector("#scissors");
 btn3.addEventListener("click", () => {
     playerSelection = "scissors";
-    para.textContent = ("You selected: " + playerSelection + "!");
+    handlePlayerSelection();
 });
 
-function playGame() {
-    // Call getComputerChoice function
-    getComputerChoice();
-    console.log("The computer selected: " + computerSelection + "!");
+function handlePlayerSelection() {
+    let para1;
+    let para2; 
+    para1 = document.createElement("p");
+    div.appendChild(para1);
+    para1.textContent = ("You selected: " + playerSelection + "!");
+    para2 = document.createElement("p");
+    div.appendChild(para2);
+    para2.textContent = ("The computer selected: " + computerSelection + "!");
 }
 
-
+// Call getComputerChoice function
+getComputerChoice();
 
 // Resolve a round 
 function playRound(playerSelection, computerSelection) {
@@ -115,8 +119,6 @@ if (resultMessage.charAt(0) === 'V') {
     console.log("Your score is " + playerScore + ".");
     console.log("Computer's score is " + computerScore + ".");
 }                                         
-
-playGame();
 
 function finalResult() {
     if (playerScore > computerScore) {

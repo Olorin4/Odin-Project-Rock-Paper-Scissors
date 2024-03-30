@@ -23,5 +23,5 @@ body {
     flex-direction: column;
     padding-bottom: 20px;
     border-bottom: 3px solid blue;
-    flex-grow: 0;
+    flex: 0;
 }
