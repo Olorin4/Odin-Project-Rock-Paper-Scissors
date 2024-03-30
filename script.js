@@ -54,7 +54,7 @@ btn3.addEventListener("click", () => {
 
 // Resolve a round 
 let resultRound;
-function playRound(playerSelection) {
+function playRound() {
     if (playerSelection === "rock") {
         switch (computerSelection) {
             case "paper":
@@ -91,30 +91,27 @@ function playRound(playerSelection) {
     para2.textContent = ("Round: " + resultRound);
 }
 
-let playerAnswer;
 let playerScore = 0;
 let computerScore = 0;
-
 function gameScore() {
     playRound();
     const para3 = document.createElement("p");
     div.appendChild(para3);
-    if (resultRound.charAt(0) === "V") {
-        playerScore = ++playerScore;
-    } else if (resultRound.charAt(0) === "D") {
-        computerScore = ++computerScore;
-    } else {
-    }   
-    para3.textContent += ("Your score is " + playerScore + ". ");
-    para3.textContent += ("Computer's score is " + computerScore + ".");
-}
-                        
-function finalResult() {
-    if (playerScore > computerScore) {
-        para3.textContent += ("Congratulations! You won the game!");
-    } else if (playerScore < computerScore) {
-        para3.textContent += ("You lost the game!");
-    } else {
-        para3.textContent += ("It's a tie! Play again!");
+    if (playerScore < 5 || computerScore > 5) {
+        if (resultRound.charAt(0) === "V") {
+            playerScore = ++playerScore;
+        } else if (resultRound.charAt(0) === "D") {
+            computerScore = ++computerScore;
+        } 
+        para3.textContent += ("Your score is " + playerScore + ". ");
+        para3.textContent += ("Computer's score is " + computerScore + ".");
+    } else if (playerScore == 5 || computerScore == 5) {
+        if (playerScore > computerScore) {
+            para3.textContent += ("Congratulations! You won the game!");
+        } else if (playerScore < computerScore) {
+            para3.textContent += ("You lost the game!");
+        } else {
+            para3.textContent += ("It's a tie! Play again!");
+        }
     }
 }
