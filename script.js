@@ -32,24 +32,29 @@ function getPlayerSelection() {
 
 // button events
 let playerSelection;
-let btn1 = document.querySelector("#rock");
-btn1.addEventListener("click", () => {
+let selectRock = () => {
     playerSelection = "rock";
     getPlayerSelection(); 
     gameScore();
-});
-let btn2 = document.querySelector("#paper");
-btn2.addEventListener("click", () => {
+};
+let btn1 = document.querySelector("#rock");
+btn1.addEventListener("click", selectRock);
+
+let selectPaper = () => {
     playerSelection = "paper";
-    getPlayerSelection();
+    getPlayerSelection(); 
     gameScore();
-});
-let btn3 = document.querySelector("#scissors");
-btn3.addEventListener("click", () => {
+};
+let btn2 = document.querySelector("#paper");
+btn2.addEventListener("click", selectPaper);
+
+let selectScissors = () => {
     playerSelection = "scissors";
-    getPlayerSelection();
+    getPlayerSelection(); 
     gameScore();
-});
+};
+let btn3 = document.querySelector("#scissors");
+btn3.addEventListener("click", selectScissors);
 
 // Resolve a round 
 let resultRound;
@@ -104,15 +109,28 @@ function gameScore() {
 
     if (playerScore == 5 || computerScore == 5) {
         if (playerScore > computerScore) {
-            para3.textContent += ("Congratulations! You won the game! The final score is " + playerScore + " -  "+ computerScore + ".");
+            para3.textContent = ("Congratulations! You won the game! The final score is " + playerScore + " -  "+ computerScore + ".");
         } else if (playerScore < computerScore) {
-            para3.textContent += ("You lost the game! The final score is " + playerScore + " -  "+ computerScore + ".");
+            para3.textContent = ("You lost the game! The final score is " + playerScore + " -  "+ computerScore + ".");
         } else {
-            para3.textContent += ("It's a tie! Play again! The final score is " + playerScore + " -  "+ computerScore + ".");
+            para3.textContent = ("It's a tie! Play again! The final score is " + playerScore + " -  "+ computerScore + ".");
         }
-        para3.style.fontWeight = "bold";
+        para3.style.cssText = "fontWeight: bold; color: blue; background: yellow;";
+        removeButtons();
     } else {
         para3.textContent += ("Your score is " + playerScore + ". ");
         para3.textContent += ("Computer's score is " + computerScore + ".");
+    }
+}
+
+function removeButtons() {
+    const para4 = document.createElement("p");
+    div.appendChild(para4);
+    if (playerScore == 5 || computerScore == 5) {
+        btn1.removeEventListener("click", selectRock);
+        btn2. removeEventListener("click", selectPaper);
+        btn3.removeEventListener("click", selectScissors);
+        para4.textContent = "GAME OVER. Refresh the page to play again.";
+        para4.style.cssText = "fontWeight: bold; color: blue; background: yellow;";
     }
 }
