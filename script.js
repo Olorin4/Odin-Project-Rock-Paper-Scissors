@@ -7,41 +7,74 @@ function getComputerChoice() {
     // Assign 'Rock', 'Paper', or 'Scissors' based on the random number
     switch (randomNumber) {
         case 0:
-            computerSelection = 'Rock';
+            computerSelection = 'rock';
             break;
         case 1:
-            computerSelection = 'Paper';
+            computerSelection = 'paper';
             break;
         case 2:
-            computerSelection = 'Scissors';
+            computerSelection = 'scissors';
             break;
     }
     return computerSelection;
 }
 
+//Add div for displaying results
+const container = document.querySelector(".container");
+const div = document.createElement("div");
+div.classList.add("results");
+container.appendChild(div);
+const para = document.createElement("p");
+div.appendChild(para);
+
 let playerAnswer;
 let playerSelection;
 let resultMessage;
 
+// button events
+let btn1 = document.querySelector("#rock");
+btn1.addEventListener("click", () => {
+    playerSelection = "rock";
+    para.textContent = ("You selected: " + playerSelection + "!");
+});
+let btn2 = document.querySelector("#paper");
+btn2.addEventListener("click", () => {
+    playerSelection = "paper";
+    para.textContent = ("You selected: " + playerSelection + "!");
+});
+let btn3 = document.querySelector("#scissors");
+btn3.addEventListener("click", () => {
+    playerSelection = "scissors";
+    para.textContent = ("You selected: " + playerSelection + "!");
+});
+
+function playGame() {
+    // Call getComputerChoice function
+    getComputerChoice();
+    console.log("The computer selected: " + computerSelection + "!");
+}
+
+
+
 // Resolve a round 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection = 'Rock') {
+    if (playerSelection = 'rock') {
         switch (computerSelection) {
-            case ('Paper'):
+            case ('paper'):
                 resultMessage = "Defeat! Paper beats Rock.";
                 break;
-            case ('Scissors'):
+            case ('scissors'):
                 resultMessage = "Victory! Rock beats Scissors.";
                 break;
             default: resultMessage = "Tie!";
         }
         return resultMessage;
-    } else if (playerSelection = 'Paper') {
+    } else if (playerSelection = 'paper') {
         switch (computerSelection) {
-            case ('Rock'):
+            case ('rock'):
                 resultMessage = "Victory! Paper beats Rock.";
                 break;
-            case ('Scissors'):
+            case ('scissors'):
                 resultMessage = "Defeat! Scissors beat Paper.";
                 break;
             default: resultMessage = "Tie!";
@@ -49,10 +82,10 @@ function playRound(playerSelection, computerSelection) {
         return resultMessage;
     } else {
         switch (computerSelection) {
-            case ('Rock'):
+            case ('rock'):
                 resultMessage = "Defeat! Rock beats Scissors.";
                 break;
-            case ('Paper'):
+            case ('paper'):
                 resultMessage = "Victory! Scissors beat Paper.";
                 break;
             default: resultMessage = "Tie!"; 
@@ -61,42 +94,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
 let playerScore = 0;
 let computerScore = 0;
 
-// button events
-let btn1 = document.querySelector("#rock");
-btn1.addEventListener("click", () => {
-    return playerSelection = "rock";
-});
-let btn2 = document.querySelector("#paper");
-btn2.addEventListener("click", () => {
-    return playerSelection = "paper";
-});
-let btn3 = document.querySelector("#scissors");
-btn3.addEventListener("click", () => {
-    return playerSelection = "scissors");
-});
-
-//Add div for displaying results
-const div = document.createElement("div");
-div.classList.add("results");
-const para = document.createElement("p");
-div.appendChild(para);
-
 // Write a NEW function called playGame(). Use the previous function inside of this one to play 
 // a five round game that keeps score and reports a winner or loser at the end.
-function playGame() {
-    para.textContent = ("You selected: " + playerSelection + "!");
-    // Call getComputerChoice function
-    getComputerChoice();
-    console.log("The computer selected: " + computerSelection + "!");
-    return playerSelection;
-}
     
     // Call playRound function
- playRound(playerSelection, computerSelection);
+playRound(playerSelection, computerSelection);
 console.log(resultMessage);
 if (resultMessage.charAt(0) === 'V') {
     playerScore = ++playerScore;
