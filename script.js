@@ -20,12 +20,11 @@ let container = document.querySelector(".container");
 let div = document.createElement("div"); 
 div.classList.add("results");
 container.appendChild(div);
-let para;
 
 // Triggers div creation and computer selection
 function getPlayerSelection() {
     getComputerSelection();
-    para = document.createElement("p");
+    const para = document.createElement("p");
     div.appendChild(para);
     para.textContent = ("You selected: " + playerSelection + "! ");
     para.textContent += (" The computer selected: " + computerSelection + "!");
@@ -97,7 +96,15 @@ function gameScore() {
     playRound();
     const para3 = document.createElement("p");
     div.appendChild(para3);
-    if (playerScore < 5 || computerScore > 5) {
+    if (playerScore == 5 || computerScore == 5) {
+        if (playerScore > computerScore) {
+        para3.textContent += ("Congratulations! You won the game!");
+        } else if (playerScore < computerScore) {
+            para3.textContent += ("You lost the game!");
+        } else {
+            para3.textContent += ("It's a tie! Play again!");
+        }
+    } else {
         if (resultRound.charAt(0) === "V") {
             playerScore = ++playerScore;
         } else if (resultRound.charAt(0) === "D") {
@@ -105,13 +112,5 @@ function gameScore() {
         } 
         para3.textContent += ("Your score is " + playerScore + ". ");
         para3.textContent += ("Computer's score is " + computerScore + ".");
-    } else if (playerScore == 5 || computerScore == 5) {
-        if (playerScore > computerScore) {
-            para3.textContent += ("Congratulations! You won the game!");
-        } else if (playerScore < computerScore) {
-            para3.textContent += ("You lost the game!");
-        } else {
-            para3.textContent += ("It's a tie! Play again!");
-        }
     }
 }
