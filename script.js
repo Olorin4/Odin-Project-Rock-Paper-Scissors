@@ -94,22 +94,24 @@ let playerScore = 0;
 let computerScore = 0;
 function gameScore() {
     playRound();
+    if (resultRound.charAt(0) === "V") {
+        playerScore = ++playerScore;
+    } else if (resultRound.charAt(0) === "D") {
+        computerScore = ++computerScore;
+    }
     const para3 = document.createElement("p");
     div.appendChild(para3);
+
     if (playerScore == 5 || computerScore == 5) {
         if (playerScore > computerScore) {
-        para3.textContent += ("Congratulations! You won the game!");
+            para3.textContent += ("Congratulations! You won the game! The final score is " + playerScore + " -  "+ computerScore + ".");
         } else if (playerScore < computerScore) {
-            para3.textContent += ("You lost the game!");
+            para3.textContent += ("You lost the game! The final score is " + playerScore + " -  "+ computerScore + ".");
         } else {
-            para3.textContent += ("It's a tie! Play again!");
+            para3.textContent += ("It's a tie! Play again! The final score is " + playerScore + " -  "+ computerScore + ".");
         }
+        para3.style.fontWeight = "bold";
     } else {
-        if (resultRound.charAt(0) === "V") {
-            playerScore = ++playerScore;
-        } else if (resultRound.charAt(0) === "D") {
-            computerScore = ++computerScore;
-        } 
         para3.textContent += ("Your score is " + playerScore + ". ");
         para3.textContent += ("Computer's score is " + computerScore + ".");
     }
