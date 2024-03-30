@@ -65,14 +65,26 @@ function playRound(playerSelection, computerSelection) {
 let playerScore = 0;
 let computerScore = 0;
 
+// button listeners
+let btn1 = document.querySelector("#rock");
+btn1.addEventListener("click", playRound(rock));
+let btn2 = document.querySelector("#paper");
+btn2.addEventListener("click", playRound(paper));
+let btn3 = document.querySelector("#scissors");
+btn3.addEventListener("click", playRound(scissors));
+
+
+
+
+
 // Write a NEW function called playGame(). Use the previous function inside of this one to play 
 // a five round game that keeps score and reports a winner or loser at the end.
-function playGame() {
-    // Get user's answer
-    let playerAnswer = prompt("Please select: Rock, Paper or Scissor?");
-    // Convert user's answer to a lower case string with an upper case first letter 
-    let playerSelection = playerAnswer.charAt(0).toUpperCase() + playerAnswer.slice(1).toLowerCase();
-    console.log("You selected: " + playerSelection + "!");
+// function playGame() {
+//     // Get user's answer
+//     let playerAnswer = prompt("Please select: Rock, Paper or Scissor?");
+//     // Convert user's answer to a lower case string with an upper case first letter 
+//     let playerSelection = playerAnswer.charAt(0).toUpperCase() + playerAnswer.slice(1).toLowerCase();
+//     console.log("You selected: " + playerSelection + "!");
     
     // Call getComputerChoice function
     getComputerChoice();
@@ -95,10 +107,6 @@ function playGame() {
     }                                         
 }
 
-playGame();
-playGame();
-playGame();
-playGame();
 playGame();
 
 function finalResult() {
