@@ -65,49 +65,51 @@ function playRound(playerSelection, computerSelection) {
 let playerScore = 0;
 let computerScore = 0;
 
-// button listeners
+// button events
 let btn1 = document.querySelector("#rock");
-btn1.addEventListener("click", playRound("rock"));
+btn1.addEventListener("click", () => {
+    return playerSelection = "rock";
+});
 let btn2 = document.querySelector("#paper");
-btn2.addEventListener("click", playRound("paper"));
+btn2.addEventListener("click", () => {
+    return playerSelection = "paper";
+});
 let btn3 = document.querySelector("#scissors");
-btn3.addEventListener("click", playRound("scissors"));
+btn3.addEventListener("click", () => {
+    return playerSelection = "scissors");
+});
 
-//div for displaying results
+//Add div for displaying results
 const div = document.createElement("div");
-div.classList.add("Results");
-
-
+div.classList.add("results");
+const para = document.createElement("p");
+div.appendChild(para);
 
 // Write a NEW function called playGame(). Use the previous function inside of this one to play 
 // a five round game that keeps score and reports a winner or loser at the end.
-// function playGame() {
-//     // Get user's answer
-//     let playerAnswer = prompt("Please select: Rock, Paper or Scissor?");
-//     // Convert user's answer to a lower case string with an upper case first letter 
-//     let playerSelection = playerAnswer.charAt(0).toUpperCase() + playerAnswer.slice(1).toLowerCase();
-//     console.log("You selected: " + playerSelection + "!");
-    
+function playGame() {
+    para.textContent = ("You selected: " + playerSelection + "!");
     // Call getComputerChoice function
     getComputerChoice();
     console.log("The computer selected: " + computerSelection + "!");
+    return playerSelection;
+}
     
     // Call playRound function
-    playRound(playerSelection, computerSelection);
-    console.log(resultMessage);
-    if (resultMessage.charAt(0) === 'V') {
-        playerScore = ++playerScore;
-        console.log("Your score is " + playerScore + ".");
-        console.log("Computer's score is " + computerScore + ".");
-    } else if (resultMessage.charAt(0) === 'D') {
-        computerScore = ++computerScore;
-        console.log("Your score is " + playerScore + ".");
-        console.log("Computer's score is " + computerScore + ".");
-    } else {
-        console.log("Your score is " + playerScore + ".");
-        console.log("Computer's score is " + computerScore + ".");
-    }                                         
-}
+ playRound(playerSelection, computerSelection);
+console.log(resultMessage);
+if (resultMessage.charAt(0) === 'V') {
+    playerScore = ++playerScore;
+    console.log("Your score is " + playerScore + ".");
+    console.log("Computer's score is " + computerScore + ".");
+} else if (resultMessage.charAt(0) === 'D') {
+    computerScore = ++computerScore;
+    console.log("Your score is " + playerScore + ".");
+    console.log("Computer's score is " + computerScore + ".");
+} else {
+    console.log("Your score is " + playerScore + ".");
+    console.log("Computer's score is " + computerScore + ".");
+}                                         
 
 playGame();
 
@@ -121,4 +123,4 @@ function finalResult() {
     }
 }
 
-finalResult();
+finalResult();    
